@@ -21,7 +21,7 @@ public class OrderServiceTest {
 
         OrderService orderService = new OrderServiceImpl();
 
-        System.out.println( "订单号是：" + orderService.createOrder(cart, 1) );
+        System.out.println( "訂單號是：" + orderService.createOrder(cart, 1) );
 
     }
 }

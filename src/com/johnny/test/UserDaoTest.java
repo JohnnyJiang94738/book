@@ -13,16 +13,16 @@ public class UserDaoTest {
     public void queryUserByUsername() {
 
         if (userDao.queryUserByUsername("admin1234") == null ){
-            System.out.println("用户名可用！");
+            System.out.println("用戶名可用！");
         } else {
-            System.out.println("用户名已存在！");
+            System.out.println("用戶名已存在！");
         }
     }
 
     @Test
     public void queryUserByUsernameAndPassword() {
         if ( userDao.queryUserByUsernameAndPassword("admin","admin1234") == null) {
-            System.out.println("用户名或密码错误，登录失败");
+            System.out.println("用戶名或密碼錯誤，登入失敗");
         } else {
             System.out.println("登入成功");
         }

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>編輯圖書</title>
 
-	<%-- 静态包含 base标签、css样式、jQuery文件 --%>
+	<%-- 靜態包含 base標籤、css樣式、jQuery文件 --%>
 	<%@ include file="/pages/common/head.jsp"%>
 
 
@@ -30,7 +30,7 @@
 			<img class="logo_img" alt="" src="../../static/img/logo.gif" >
 			<span class="wel_word">編輯圖書</span>
 
-			<%-- 静态包含 manager管理模块的菜单  --%>
+			<%-- 靜態包含 manager管理模組的菜單  --%>
 			<%@include file="/pages/common/manager_menu.jsp"%>
 
 
@@ -62,7 +62,7 @@
 			</form>
 		</div>
 
-		<%--静态包含页脚内容--%>
+		<%--靜態包含頁腳内容--%>
 		<%@include file="/pages/common/footer.jsp"%>
 
 </body>

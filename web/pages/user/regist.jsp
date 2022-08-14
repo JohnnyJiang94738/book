@@ -5,16 +5,14 @@
 		<meta charset="UTF-8">
 		<title>強尼書城註冊頁面</title>
 
-		<%-- 静态包含 base标签、css样式、jQuery文件 --%>
+		<%-- 靜態包含 base標籤、css樣式、jQuery文件 --%>
 		<%@ include file="/pages/common/head.jsp"%>
 
-
 		<script type="text/javascript">
-			// 页面加载完成之后
+			// 頁面加載完成之後
 			$(function () {
-
 				$("#username").blur(function () {
-					//1 获取用户名
+					//1 獲取用戶名
 					var username = this.value;
 					$.getJSON("http://localhost:8080/book/userServlet","action=ajaxExistsUsername&username=" + username,function (data) {
 						if (data.existsUsername) {
@@ -25,84 +23,75 @@
 					});
 				});
 
-
-				// 给验证码的图片，绑定单击事件
+				// 給驗證碼的圖片，綁定單擊事件
 				$("#code_img").click(function () {
-					// 在事件响应的function函数中有一个this对象。这个this对象，是当前正在响应事件的dom对象
-					// src属性表示验证码img标签的 图片路径。它可读，可写
+					// 在事件響應的function函數中有一個this物件。這個this物件，是目前正在響應事件的dom物件
+					// src屬性表示驗證碼img標籤的圖片路徑。它可讀也可寫
 					// alert(this.src);
 					this.src = "${basePath}kaptcha.jpg?d=" + new Date();
 				});
 
-				// 给注册绑定单击事件
+				// 給註冊綁定單擊事件
 				$("#sub_btn").click(function () {
-					// 验证用户名：必须由字母，数字下划线组成，并且长度为5到12位
-					//1 获取用户名输入框里的内容
+					// 驗證用戶名：必須由字母、數字及底線组成，並且長度為5到12
+					//1 取得用戶名輸入框裡的内容
 					var usernameText = $("#username").val();
-					//2 创建正则表达式对象
+					//2 創建正則表達式物件
 					var usernamePatt = /^\w{5,12}$/;
-					//3 使用test方法验证
+					//3 使用test方法驗證
 					if (!usernamePatt.test(usernameText)) {
-						//4 提示用户结果
+						//4 提示用戶結果
 						$("span.errorMsg").text("帳號名稱不符合規則!");
-
 						return false;
 					}
-					// 验证密码：必须由字母，数字下划线组成，并且长度为5到12位
-					//1 获取用户名输入框里的内容
+					// 驗證密碼：必須由字母、數字及底線组成，並且長度為5到12
+					//1 取得用戶名輸入框裡的内容
 					var passwordText = $("#password").val();
-					//2 创建正则表达式对象
+					//2 創建正則表達式物件
 					var passwordPatt = /^\w{5,12}$/;
-					//3 使用test方法验证
+					//3 使用test方法驗證
 					if (!passwordPatt.test(passwordText)) {
-						//4 提示用户结果
+						//4 提示用戶結果
 						$("span.errorMsg").text("密碼不符合規則!");
-
 						return false;
 					}
 
-					// 验证确认密码：和密码相同
-					//1 获取确认密码内容
+					// 驗證確認密碼：和密碼相同
+					//1 取得確認密碼内容
 					var repwdText = $("#repwd").val();
-					//2 和密码相比较
+					//2 和密碼相比较
 					if (repwdText != passwordText) {
-						//3 提示用户
+						//3 提示用戶
 						$("span.errorMsg").text("確認密碼和密碼不一致!");
-
 						return false;
 					}
 
-					// 邮箱验证：xxxxx@xxx.com
-					//1 获取邮箱里的内容
+					// 信箱驗證：xxxxx@xxx.com
+					//1 取得信箱裡的内容
 					var emailText = $("#email").val();
-					//2 创建正则表达式对象
+					//2 創建正則表達式物件
 					var emailPatt = /^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/;
-					//3 使用test方法验证是否合法
+					//3 使用test方法驗證是否合法
 					if (!emailPatt.test(emailText)) {
-						//4 提示用户
+						//4 提示用戶
 						$("span.errorMsg").text("e-mail格式不符合規則!");
-
 						return false;
 					}
 
-					// 验证码
+					// 驗證碼
 					var codeText = $("#code").val();
-
-					//去掉验证码前后空格
+					//去掉驗證碼前後空格
 					codeText = $.trim(codeText);
-
 					if (codeText == null || codeText == "") {
-						//4 提示用户
+						//4 提示用戶
 						$("span.errorMsg").text("請輸入驗證碼!");
-
 						return false;
 					}
 
-					// 去掉错误信息
+					// 去掉錯誤訊息
 					$("span.errorMsg").text("");
 
 				});
-
 			});
 
 		</script>
@@ -173,7 +162,7 @@
 				</div>
 			</div>
 
-		<%--静态包含页脚内容--%>
+		<%--靜態包含頁腳内容--%>
 		<%@include file="/pages/common/footer.jsp"%>
 
 

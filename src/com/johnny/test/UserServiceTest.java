@@ -23,9 +23,9 @@ public class UserServiceTest {
     @Test
     public void existsUsername() {
         if (userService.existsUsername("wzg16888")) {
-            System.out.println("用户名已存在!");
+            System.out.println("用戶名已存在!");
         } else {
-            System.out.println("用户名可用!");
+            System.out.println("用戶名可用!");
         }
     }
 }

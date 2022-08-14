@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>強尼書城會員登入頁面</title>
 
-	<%-- 静态包含 base标签、css样式、jQuery文件 --%>
+	<%-- 靜態包含 base標籤、css樣式、jQuery文件 --%>
 	<%@ include file="/pages/common/head.jsp"%>
 
 
@@ -24,7 +24,7 @@
 		<div id="header">
 				<img class="logo_img" alt="" src="static/img/logo.gif" >
 
-				<%--静态包含，登录 成功之后的菜单 --%>
+				<%--静態包含，登入成功之後的菜單 --%>
 				<%@ include file="/pages/common/login_success_menu.jsp"%>
 
 
@@ -37,7 +37,7 @@
 		</div>
 
 
-		<%--静态包含页脚内容--%>
+		<%--靜態包含頁腳内容--%>
 		<%@include file="/pages/common/footer.jsp"%>
 
 

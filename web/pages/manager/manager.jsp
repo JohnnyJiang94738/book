@@ -3,9 +3,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>后台管理</title>
+<title>後台管理</title>
 
-	<%-- 静态包含 base标签、css样式、jQuery文件 --%>
+	<%-- 靜態包含 base標籤、css樣式、jQuery文件 --%>
 	<%@ include file="/pages/common/head.jsp"%>
 
 
@@ -20,20 +20,20 @@
 	
 	<div id="header">
 			<img class="logo_img" alt="" src="../../static/img/logo.gif" >
-			<span class="wel_word">后台管理系统</span>
+			<span class="wel_word">後台管理系統</span>
 
-		<%-- 静态包含 manager管理模块的菜单  --%>
+		<%-- 靜態包含 manager管理模組的菜單  --%>
 		<%@include file="/pages/common/manager_menu.jsp"%>
 
 
 	</div>
 	
 	<div id="main">
-		<h1>欢迎管理员进入后台管理系统</h1>
+		<h1>歡迎管理員進入後台管理系統</h1>
 	</div>
 
 
-	<%--静态包含页脚内容--%>
+	<%--靜態包含頁腳内容--%>
 	<%@include file="/pages/common/footer.jsp"%>
 
 

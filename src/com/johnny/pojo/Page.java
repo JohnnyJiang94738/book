@@ -3,22 +3,22 @@ package com.johnny.pojo;
 import java.util.List;
 
 /**
- * Page是分页的模型对象
- * @param <T> 是具体的模块的javaBean类
+ * Page是分頁的模型物件
+ * @param <T> 是具體的模組的javaBean類
  */
 public class Page<T> {
     public static final Integer PAGE_SIZE = 4;
-    // 当前页码
+    // 目前頁碼
     private Integer pageNo;
-    // 总页码
+    // 總頁碼
     private Integer pageTotal;
-    // 当前页显示数量
+    // 目前頁顯示數量
     private Integer pageSize = PAGE_SIZE;
-    // 总记录数
+    // 總紀錄數
     private Integer pageTotalCount;
-    // 当前页数据
+    // 目前頁數據
     private List<T> items;
-    // 分页条的请求地址
+    // 分頁條的請求地址
     private String url;
 
     public String getUrl() {
@@ -34,7 +34,7 @@ public class Page<T> {
     }
 
     public void setPageNo(Integer pageNo) {
-        /* 数据边界的有效检查 */
+        /* 數據邊界的有效檢查 */
         if (pageNo < 1) {
             pageNo = 1;
         }

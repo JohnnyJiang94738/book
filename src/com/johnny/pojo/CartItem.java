@@ -3,7 +3,7 @@ package com.johnny.pojo;
 import java.math.BigDecimal;
 
 /**
- * 购物车的商品项
+ * 購物車的商品項
  */
 public class CartItem {
     private Integer id;

@@ -7,34 +7,34 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%--分页条的开始--%>
+<%--分頁條的開始--%>
 <div id="page_nav">
-    <%--大于首页，才显示--%>
+    <%--大於首頁，才顯示--%>
     <c:if test="${requestScope.page.pageNo > 1}">
         <a href="${ requestScope.page.url }&pageNo=1">首頁</a>
         <a href="${ requestScope.page.url }&pageNo=${requestScope.page.pageNo-1}">上一頁</a>
     </c:if>
-    <%--页码输出的开始--%>
+    <%--頁碼輸出的開始--%>
     <c:choose>
-        <%--情况1：如果总页码小于等于5的情况，页码的范围是：1-总页码--%>
+        <%--情況1：如果總頁碼小於等於5的情況，頁碼的範圍是：1-總頁碼--%>
         <c:when test="${ requestScope.page.pageTotal <= 5 }">
             <c:set var="begin" value="1"/>
             <c:set var="end" value="${requestScope.page.pageTotal}"/>
         </c:when>
-        <%--情况2：总页码大于5的情况--%>
+        <%--情況2：總頁碼大於5的情況--%>
         <c:when test="${requestScope.page.pageTotal > 5}">
             <c:choose>
-                <%--小情况1：当前页码为前面3个：1，2，3的情况，页码范围是：1-5.--%>
+                <%--小情況1：目前頁碼為前面3個：1，2，3的情況，頁碼範圍是：1-5.--%>
                 <c:when test="${requestScope.page.pageNo <= 3}">
                     <c:set var="begin" value="1"/>
                     <c:set var="end" value="5"/>
                 </c:when>
-                <%--小情况2：当前页码为最后3个，8，9，10，页码范围是：总页码减4 - 总页码--%>
+                <%--小情況2：目前頁碼為最後3個，8，9，10，頁碼範圍是：總頁碼減4 - 總頁碼--%>
                 <c:when test="${requestScope.page.pageNo > requestScope.page.pageTotal-3}">
                     <c:set var="begin" value="${requestScope.page.pageTotal-4}"/>
                     <c:set var="end" value="${requestScope.page.pageTotal}"/>
                 </c:when>
-                <%--小情况3：4，5，6，7，页码范围是：当前页码减2 - 当前页码加2--%>
+                <%--小情況3：4，5，6，7，頁碼範圍是：目前頁碼減2 - 目前頁碼加2--%>
                 <c:otherwise>
                     <c:set var="begin" value="${requestScope.page.pageNo-2}"/>
                     <c:set var="end" value="${requestScope.page.pageNo+2}"/>
@@ -51,10 +51,10 @@
             <a href="${ requestScope.page.url }&pageNo=${i}">${i}</a>
         </c:if>
     </c:forEach>
-    <%--页码输出的结束--%>
+    <%--頁碼輸出的結束--%>
 
 
-    <%-- 如果已经 是最后一页，则不显示下一页，末页 --%>
+    <%-- 如果已經是最後一頁，則不顯示下一頁，末頁 --%>
     <c:if test="${requestScope.page.pageNo < requestScope.page.pageTotal}">
         <a href="${ requestScope.page.url }&pageNo=${requestScope.page.pageNo+1}">下一頁</a>
         <a href="${ requestScope.page.url }&pageNo=${requestScope.page.pageTotal}">末頁</a>
@@ -67,7 +67,7 @@
     <script type="text/javascript">
 
         $(function () {
-            // 跳到指定的页码
+            // 跳到指定的頁碼
             $("#searchPageBtn").click(function () {
 
                 var pageNo = $("#pn_input").val();
@@ -75,9 +75,9 @@
                 <%--var pageTotal = ${requestScope.page.pageTotal};--%>
                 <%--alert(pageTotal);--%>
 
-                // javaScript语言中提供了一个location地址栏对象
-                // 它有一个属性叫href.它可以获取浏览器地址栏中的地址
-                // href属性可读，可写
+                // javaScript語言中提供了一個location地址欄物件
+                // 它有一個屬性叫href.它可以獲取瀏覽器地址欄中的地址
+                // href屬性可讀，可寫
                 location.href = "${pageScope.basePath}${ requestScope.page.url }&pageNo=" + pageNo;
 
             });
@@ -86,6 +86,6 @@
     </script>
 
 </div>
-<%--分页条的结束--%>
+<%--分頁條的結束--%>
 
 

@@ -41,28 +41,28 @@ public class BookServiceImpl implements BookService {
     public Page<Book> page(int pageNo, int pageSize) {
         Page<Book> page = new Page<Book>();
 
-        // 设置每页显示的数量
+        // 設置每頁顯示的數量
         page.setPageSize(pageSize);
-        // 求总记录数
+        // 求總紀錄數
         Integer pageTotalCount = bookDao.queryForPageTotalCount();
-        // 设置总记录数
+        // 設置總紀錄數
         page.setPageTotalCount(pageTotalCount);
-        // 求总页码
+        // 求總頁碼
         Integer pageTotal = pageTotalCount / pageSize;
         if (pageTotalCount % pageSize > 0) {
             pageTotal += 1;
         }
-        // 设置总页码
+        // 設置總頁碼
         page.setPageTotal(pageTotal);
 
-        // 设置当前页码
+        // 設置目前頁碼
         page.setPageNo(pageNo);
 
-        // 求当前页数据的开始索引
+        // 求目前頁數據的開始索引
         int begin = (page.getPageNo() - 1) * pageSize;
-        // 求当前页数据
+        // 求目前頁數據
         List<Book> items = bookDao.queryForPageItems(begin,pageSize);
-        // 设置当前页数据
+        // 設置目前頁數據
         page.setItems(items);
 
         return page;
@@ -72,28 +72,28 @@ public class BookServiceImpl implements BookService {
     public Page<Book> pageByPrice(int pageNo, int pageSize, int min, int max) {
         Page<Book> page = new Page<Book>();
 
-        // 设置每页显示的数量
+        // 設置每頁顯示的數量
         page.setPageSize(pageSize);
-        // 求总记录数
+        // 求總紀錄數
         Integer pageTotalCount = bookDao.queryForPageTotalCountByPrice(min,max);
-        // 设置总记录数
+        // 設置總紀錄數
         page.setPageTotalCount(pageTotalCount);
-        // 求总页码
+        // 求總頁碼
         Integer pageTotal = pageTotalCount / pageSize;
         if (pageTotalCount % pageSize > 0) {
             pageTotal+=1;
         }
-        // 设置总页码
+        // 設置總頁碼
         page.setPageTotal(pageTotal);
 
-        // 设置当前页码
+        // 設置目前頁碼
         page.setPageNo(pageNo);
 
-        // 求当前页数据的开始索引
+        // 求目前頁數據的開始索引
         int begin = (page.getPageNo() - 1) * pageSize;
-        // 求当前页数据
+        // 求目前頁數據
         List<Book> items = bookDao.queryForPageItemsByPrice(begin,pageSize,min,max);
-        // 设置当前页数据
+        // 設置目前頁數據
         page.setItems(items);
 
         return page;

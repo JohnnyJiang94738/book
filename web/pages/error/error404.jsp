@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>电子产品</title>
+<title>電子產品</title>
 
-	<%-- 静态包含 base标签、css样式、jQuery文件 --%>
+	<%-- 靜態包含 base標籤、css樣式、jQuery文件 --%>
 	<%@ include file="/pages/common/head.jsp"%>
 
 </head>
 <body>
-很抱歉。您访问的页面不存在，或已经被删除！！！ <br>
-<a href="index.jsp">返回首页</a>
+	很抱歉!您訪問的頁面不存在，或已經被刪除！！！ <br>
+<a href="index.jsp">返回首頁</a>
 
 </body>
 </html>

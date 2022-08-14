@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class WebUtils {
     /**
-     * 把Map中的值注入到对应的JavaBean属性中。
+     * 把Map中的值注入到對應的JavaBean屬性中。
      * @param value
      * @param bean
      */
@@ -14,7 +14,7 @@ public class WebUtils {
         try {
             System.out.println("注入之前：" + bean);
             /**
-             * 把所有请求的参数都注入到user对象中
+             * 把所有請求的參数都注入到user物件中
              */
             BeanUtils.populate(bean, value);
             System.out.println("注入之後：" + bean);
@@ -25,7 +25,7 @@ public class WebUtils {
     }
 
     /**
-     * 将字符串转换成为int类型的数据
+     * 將字符串轉換成為int類型的數據
      * @param strInt
      * @param defaultValue
      * @return

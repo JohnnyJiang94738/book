@@ -20,61 +20,61 @@ public class CartServlet extends BaseServlet {
     private BookService bookService = new BookServiceImpl();
 
     /**
-     * 修改商品数量
+     * 修改商品數量
      * @param req
      * @param resp
      * @throws ServletException
      * @throws IOException
      */
     protected void updateCount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        // 获取请求的参数 商品编号 、商品数量
+        // 獲取請求的參數商品編號 、商品數量
         int id = WebUtils.parseInt(req.getParameter("id"),0);
         int count = WebUtils.parseInt(req.getParameter("count"), 1);
-        // 获取Cart购物车对象
+        // 獲取Cart購物車物件
         Cart cart = (Cart) req.getSession().getAttribute("cart");
 
         if (cart != null) {
-            // 修改商品数量
+            // 修改商品數量
             cart.updateCount(id,count);
-            // 重定向回原来购物车展示页面
+            // 重定向回原來購物車展示頁面
             resp.sendRedirect(req.getHeader("Referer"));
         }
     }
 
     /**
-     * 清空购物车
+     * 清空購物車
      * @param req
      * @param resp
      * @throws ServletException
      * @throws IOException
      */
     protected void clear(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        // 1 获取购物车对象
+        // 1 獲取購物車物件
         Cart cart = (Cart) req.getSession().getAttribute("cart");
         if (cart != null) {
-            // 清空购物车
+            // 清空購物車
             cart.clear();
-            // 重定向回原来购物车展示页面
+            // 重定向回原來購物車展示頁面
             resp.sendRedirect(req.getHeader("Referer"));
         }
     }
     /**
-     * 删除商品项
+     * 删除商品項
      * @param req
      * @param resp
      * @throws ServletException
      * @throws IOException
      */
     protected void deleteItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        // 获取商品编号
+        // 獲取商品編號
         int id = WebUtils.parseInt(req.getParameter("id"), 0);
-        // 获取购物车对象
+        // 獲取購物車物件
         Cart cart = (Cart) req.getSession().getAttribute("cart");
 
         if (cart != null) {
-            // 删除 了购物车商品项
+            // 删除購物車商品項
             cart.deleteItem(id);
-            // 重定向回原来购物车展示页面
+            // 重定向回原來購物車展示頁面
             resp.sendRedirect(req.getHeader("Referer"));
         }
 
@@ -83,20 +83,20 @@ public class CartServlet extends BaseServlet {
 
 
     /**
-     * 加入购物车
+     * 加入購物車
      * @param req
      * @param resp
      * @throws ServletException
      * @throws IOException
      */
     protected void addItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 获取请求的参数 商品编号
+        // 獲取請求的參數商品編號
         int id = WebUtils.parseInt(req.getParameter("id"), 0);
-        // 调用bookService.queryBookById(id):Book得到图书的信息
+        // 調用bookService.queryBookById(id):Book得到圖書的資訊
         Book book = bookService.queryBookById(id);
-        // 把图书信息，转换成为CartItem商品项
+        // 把圖書資訊，轉換成為CartItem商品項
         CartItem cartItem = new CartItem(book.getId(),book.getName(),1,book.getPrice(),book.getPrice());
-        // 调用Cart.addItem(CartItem);添加商品项
+        // 調用Cart.addItem(CartItem);添加商品項
         Cart cart = (Cart) req.getSession().getAttribute("cart");
         if (cart == null) {
             cart = new Cart();
@@ -106,21 +106,21 @@ public class CartServlet extends BaseServlet {
 
         System.out.println(cart);
         System.out.println("請求頭Referer的值：" + req.getHeader("Referer"));
-        // 最后一个添加的商品名称
+        // 最後一個添加的商品名稱
         req.getSession().setAttribute("lastName", cartItem.getName());
 
-        // 重定向回原来商品所在的地址页面
+        // 重定向回原來商品所在的地址頁面
         resp.sendRedirect(req.getHeader("Referer"));
     }
 
     protected void ajaxAddItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 获取请求的参数 商品编号
+        // 獲取請求的參數商品編號
         int id = WebUtils.parseInt(req.getParameter("id"), 0);
-        // 调用bookService.queryBookById(id):Book得到图书的信息
+        // 調用bookService.queryBookById(id):Book得到圖書的資訊
         Book book = bookService.queryBookById(id);
-        // 把图书信息，转换成为CartItem商品项
+        // 把圖書資訊，轉換成為CartItem商品項
         CartItem cartItem = new CartItem(book.getId(),book.getName(),1,book.getPrice(),book.getPrice());
-        // 调用Cart.addItem(CartItem);添加商品项
+        // 調用Cart.addItem(CartItem);添加商品項
         Cart cart = (Cart) req.getSession().getAttribute("cart");
         if (cart == null) {
             cart = new Cart();
@@ -129,10 +129,10 @@ public class CartServlet extends BaseServlet {
         cart.addItem(cartItem);
 
         System.out.println(cart);
-        // 最后一个添加的商品名称
+        // 最後一個添加的商品名稱
         req.getSession().setAttribute("lastName", cartItem.getName());
 
-        //6、返回购物车总的商品数量和最后一个添加的商品名称
+        //6、返回購物車總共商品數量和最後一個添加的商品名稱
         Map<String,Object> resultMap = new HashMap<String,Object>();
 
         resultMap.put("totalCount", cart.getTotalCount());

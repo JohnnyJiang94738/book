@@ -4,13 +4,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * 订单
+ * 訂單
  */
 public class Order {
     private String orderId;
     private Date createTime;
     private BigDecimal price;
-    // 0未发货，1已发货，2表示已签收
+    // 0未出貨，1已出貨，2表示已簽收
     private Integer status = 0;
     private Integer userId;
 

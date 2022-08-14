@@ -6,21 +6,21 @@
 <meta charset="UTF-8">
 <title>圖書管理</title>
 
-	<%-- 静态包含 base标签、css样式、jQuery文件 --%>
+	<%-- 靜態包含 base標籤、css樣式、jQuery文件 --%>
 	<%@ include file="/pages/common/head.jsp"%>
 	<script type="text/javascript">
 		$(function () {
-			// 给删除的a标签绑定单击事件，用于删除的确认提示操作
+			// 給删除的a標籤綁定單擊事件，用於删除的確認提示操作
 			$("a.deleteClass").click(function () {
-				// 在事件的function函数中，有一个this对象。这个this对象，是当前正在响应事件的dom对象。
+				// 在事件的function函數中，有一個this物件。這個this物件，是目前正在響應事件的dom物件。
 				/**
-				 * confirm是确认提示框函数
-				 * 参数是它的提示内容
-				 * 它有两个按钮，一个确认，一个是取消。
-				 * 返回true表示点击了，确认，返回false表示点击取消。
+				 * confirm是確認提示框函數
+				 * 參數是它的提示内容
+				 * 它有兩個按鈕，一個確認，一個是取消。
+				 * 返回true表示點擊了確認，返回false表示點擊取消。
 				 */
 				return confirm("你確定要刪除【" + $(this).parent().parent().find("td:first").text() + "】?");
-				// return false// 阻止元素的默认行为===不提交请求
+				// return false// 阻止元素的默認行為===不提交請求
 			});
 		});
 	</script>
@@ -30,9 +30,9 @@
 	
 	<div id="header">
 			<img class="logo_img" alt="" src="../../static/img/logo.gif" >
-			<span class="wel_word">圖書管理系统</span>
+			<span class="wel_word">圖書管理系統</span>
 
-		<%-- 静态包含 manager管理模块的菜单  --%>
+		<%-- 靜態包含 manager管理模組的菜單  --%>
 		<%@include file="/pages/common/manager_menu.jsp"%>
 
 
@@ -73,7 +73,7 @@
 		</table>
 
 
-		<%--静态包含分页条--%>
+		<%--靜態包含分頁條--%>
 		<%@include file="/pages/common/page_nav.jsp"%>
 
 
@@ -82,7 +82,7 @@
 	</div>
 
 
-	<%--静态包含页脚内容--%>
+	<%--靜態包含頁腳内容--%>
 	<%@include file="/pages/common/footer.jsp"%>
 
 

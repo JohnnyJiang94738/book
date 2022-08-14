@@ -15,7 +15,7 @@ public class OrderServlet extends BaseServlet {
     private OrderService orderService = new OrderServiceImpl();
 
     /**
-     * 生成订单
+     * 生成訂單
      *
      * @param req
      * @param resp
@@ -23,9 +23,9 @@ public class OrderServlet extends BaseServlet {
      * @throws IOException
      */
     protected void createOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 先获取Cart购物车对象
+        // 先獲取Cart購物車物件
         Cart cart = (Cart) req.getSession().getAttribute("cart");
-        // 获取Userid
+        // 獲取Userid
         User loginUser = (User) req.getSession().getAttribute("user");
 
         if (loginUser == null) {
@@ -36,10 +36,10 @@ public class OrderServlet extends BaseServlet {
         System.out.println("OrderServlet程序在[" +Thread.currentThread().getName() + "]中");
 
         Integer userId = loginUser.getId();
-//        调用orderService.createOrder(Cart,Userid);生成订单
+//        調用orderService.createOrder(Cart,Userid);生成訂單
         String orderId = orderService.createOrder(cart, userId);
 //        req.setAttribute("orderId", orderId);
-        // 请求转发到/pages/cart/checkout.jsp
+        // 請求轉發到/pages/cart/checkout.jsp
 //        req.getRequestDispatcher("/pages/cart/checkout.jsp").forward(req, resp);
 
         req.getSession().setAttribute("orderId",orderId);

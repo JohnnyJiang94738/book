@@ -23,32 +23,32 @@ public class OrderServiceImpl implements OrderService {
 
         System.out.println(" OrderServiceImpl 程式在[" +Thread.currentThread().getName() + "]中");
 
-        // 订单号===唯一性
+        // 訂單號===唯一性
         String orderId = System.currentTimeMillis()+""+userId;
-        // 创建一个订单对象
+        // 創建一個訂單物件
         Order order = new Order(orderId,new Date(),cart.getTotalPrice(), 0,userId);
-        // 保存订单
+        // 保存訂單
         orderDao.saveOrder(order);
 
         //int i = 12 / 0;
 
-        // 遍历购物车中每一个商品项转换成为订单项保存到数据库
+        // 遍歷購物車中每一個商品項轉換成為訂單項保存到資料庫
         for (Map.Entry<Integer, CartItem>entry : cart.getItems().entrySet()){
-            // 获取每一个购物车中的商品项
+            // 取得每一個購物車中的商品項
             CartItem cartItem = entry.getValue();
-            // 转换为每一个订单项
+            // 轉換為每一個訂單項
             OrderItem orderItem = new OrderItem(null,cartItem.getName(),cartItem.getCount(),cartItem.getPrice(),cartItem.getTotalPrice(), orderId);
-            // 保存订单项到数据库
+            // 保存訂單項到資料庫
             orderItemDao.saveOrderItem(orderItem);
 
-            // 更新库存和销量
+            // 更新庫存和銷量
             Book book = bookDao.queryBookById(cartItem.getId());
             book.setSales( book.getSales() + cartItem.getCount() );
             book.setStock( book.getStock() - cartItem.getCount() );
             bookDao.updateBook(book);
 
         }
-        // 清空购物车
+        // 清空購物車
         cart.clear();
 
         return orderId;

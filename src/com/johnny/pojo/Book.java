@@ -21,7 +21,7 @@ public class Book {
         this.price = price;
         this.sales = sales;
         this.stock = stock;
-        // 要求给定的图书封面图书路径不能为空
+        // 要求給定的圖書封面及圖書路徑不能為空
         if (imgPath != null && !"".equals(imgPath)) {
             this.imgPath = imgPath;
         }
@@ -81,7 +81,7 @@ public class Book {
     }
 
     public void setImgPath(String imgPath) {
-        // 要求给定的图书封面图书路径不能为空
+        // 要求給定的圖書封面及圖書路徑不能為空
         if (imgPath != null && !"".equals(imgPath)) {
             this.imgPath = imgPath;
         }

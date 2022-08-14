@@ -12,13 +12,13 @@ import java.util.List;
 
 public abstract class BaseDao {
 
-    //使用DbUtils操作数据库
+    //使用DbUtils操作資料庫
     private QueryRunner queryRunner = new QueryRunner();
 
     /**
-     * update() 方法用来执行：Insert\Update\Delete语句
+     * update() 方法用來執行：Insert\Update\Delete語句
      *
-     * @return 如果返回-1,说明执行失败<br/>返回其他表示影响的行数
+     * @return 如果返回-1,說明執行失敗; 返回其他表示影響的行數
      */
     public int update(String sql, Object... args) {
 
@@ -34,12 +34,12 @@ public abstract class BaseDao {
     }
 
     /**
-     * 查询返回一个javaBean的sql语句
+     * 查詢返回一個javaBean的sql語句
      *
-     * @param type 返回的对象类型
-     * @param sql  执行的sql语句
-     * @param args sql对应的参数值
-     * @param <T>  返回的类型的泛型
+     * @param type 返回的物件類型
+     *@param sql  執行的sql語句
+     * @param args sql對應的參数值
+     * @param <T>  返回的類型的泛型
      * @return
      */
     public <T> T queryForOne(Class<T> type, String sql, Object... args) {
@@ -53,12 +53,12 @@ public abstract class BaseDao {
     }
 
     /**
-     * 查询返回多个javaBean的sql语句
+     * 查詢返回多個javaBean的sql語句
      *
-     * @param type 返回的对象类型
-     * @param sql  执行的sql语句
-     * @param args sql对应的参数值
-     * @param <T>  返回的类型的泛型
+     * @param type 返回的物件類型
+     * @param sql  執行的sql語句
+     * @param args sql對應的參數值
+     * @param <T>  返回的類型的泛型
      * @return
      */
     public <T> List<T> queryForList(Class<T> type, String sql, Object... args) {
@@ -72,9 +72,9 @@ public abstract class BaseDao {
     }
 
     /**
-     * 执行返回一行一列的sql语句
-     * @param sql   执行的sql语句
-     * @param args  sql对应的参数值
+     * 執行返回一行一列的sql語句(單一數值)
+     * @param sql   執行的sql語句
+     * @param args  sql對應的參數值
      * @return
      */
     public Object queryForSingleValue(String sql, Object... args){

@@ -21,11 +21,11 @@ public class UserServlet extends BaseServlet {
 
 
     protected void ajaxExistsUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 获取请求的参数username
+        // 獲取請求的參數username
         String username = req.getParameter("username");
-        // 调用userService.existsUsername();
+        // 調用userService.existsUsername();
         boolean existsUsername = userService.existsUsername(username);
-        // 把返回的结果封装成为map对象
+        // 把返回的結果封裝成為map物件
         Map<String,Object> resultMap = new HashMap<>();
         resultMap.put("existsUsername",existsUsername);
 
@@ -36,20 +36,20 @@ public class UserServlet extends BaseServlet {
     }
 
     /**
-     * 注销
+     * 登出
      * @param req
      * @param resp
      * @throws ServletException
      * @throws IOException
      */
     protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        1、销毁Session中用户登录的信息（或者销毁Session）
+//        1、銷毀Session中用戶登入的訊息（或者銷毀Session）
         req.getSession().invalidate();
-//        2、重定向到首页（或登录页面）。
+//        2、重定向到首頁（或登入頁面）。
         resp.sendRedirect(req.getContextPath());
     }
     /**
-     * 处理登录的功能
+     * 處理登入的功能
      *
      * @param req
      * @param resp
@@ -58,30 +58,30 @@ public class UserServlet extends BaseServlet {
      */
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        //  1、获取请求的参数
+        //  1、獲取請求的參數
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        // 调用 userService.login()登录处理业务
+        // 調用 userService.login()登入處理業務
         User loginUser = userService.login(new User(null, username, password, null));
-        // 如果等于null,说明登录 失败!
+        // 如果等於null,說明登入失敗!
         if (loginUser == null) {
-            // 把错误信息，和回显的表单项信息，保存到Request域中
+            // 把錯誤訊息，和回顯的表單項訊息，保存到Request域中
             req.setAttribute("msg", "帳號或密碼錯誤!");
             req.setAttribute("username", username);
-            //   跳回登录页面
+            //   跳回登入頁面
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
         } else {
-            // 登录 成功
-            // 保存用户登录的信息到Session域中
+            // 登入成功
+            // 保存用戶登入的訊息到Session域中
             req.getSession().setAttribute("user", loginUser);
-            //跳到成功页面login_success.html
+            //跳到成功頁面login_success.html
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         }
 
     }
 
     /**
-     * 处理注册的功能
+     * 處理註冊的功能
      *
      * @param req
      * @param resp
@@ -89,12 +89,12 @@ public class UserServlet extends BaseServlet {
      * @throws IOException
      */
     protected void regist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 获取Session中的验证码
+        // 獲取Session中的驗證碼
         String token = (String) req.getSession().getAttribute(KAPTCHA_SESSION_KEY);
-        // 删除 Session中的验证码
+        // 删除Session中的驗證碼
         req.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
 
-        //  1、获取请求的参数
+        //  1、獲取請求的參数
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
@@ -102,29 +102,29 @@ public class UserServlet extends BaseServlet {
 
         User user = WebUtils.copyParamToBean(req.getParameterMap(), new User());
 
-//        2、检查 验证码是否正确  === 写死,要求验证码为:abcde
+//        2、檢查驗證碼是否正確
         if (token!=null && token.equalsIgnoreCase(code)) {
-//        3、检查 用户名是否可用
+//        3、檢查用戶名是否可用
             if (userService.existsUsername(username)) {
                 System.out.println("帳號名稱[" + username + "]已存在");
 
-                // 把回显信息，保存到Request域中
+                // 把回顯訊息，保存到Request域中
                 req.setAttribute("msg", "帳號名稱已存在!!");
                 req.setAttribute("username", username);
                 req.setAttribute("email", email);
 
-//        跳回注册页面
+//        跳回註冊頁面
                 req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
             } else {
                 //      可用
-//                调用Service保存到数据库
+//                調用Service保存到資料庫
                 userService.registUser(new User(null, username, password, email));
 //
-//        跳到注册成功页面 regist_success.jsp
+//        跳到註冊成功頁面 regist_success.jsp
                 req.getRequestDispatcher("/pages/user/regist_success.jsp").forward(req, resp);
             }
         } else {
-            // 把回显信息，保存到Request域中
+            // 把回顯訊息，保存到Request域中
             req.setAttribute("msg", "驗證碼錯誤!!");
             req.setAttribute("username", username);
             req.setAttribute("email", email);
