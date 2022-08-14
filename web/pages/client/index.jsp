@@ -32,7 +32,7 @@
 <body>
 	
 	<div id="header">
-			<img class="logo_img" alt="" src="static/img/logo.gif" >
+			<img class="logo_img" alt="" src="static/img/logo1.png" >
 			<span class="wel_word">線上書城</span>
 			<div>
 				<%--如果用戶還沒有登入，顯示【登入和註冊的菜單】 --%>

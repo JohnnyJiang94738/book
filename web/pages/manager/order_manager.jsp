@@ -13,7 +13,7 @@
 <body>
 	
 	<div id="header">
-			<img class="logo_img" alt="" src="../../static/img/logo.gif" >
+			<img class="logo_img" alt="" src="../../static/img/logo1.png" >
 			<span class="wel_word">訂單管理系統</span>
 
 		<%-- 靜態包含 manager管理模組的菜單  --%>

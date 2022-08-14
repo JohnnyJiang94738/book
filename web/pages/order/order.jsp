@@ -19,7 +19,7 @@
 <body>
 	
 	<div id="header">
-			<img class="logo_img" alt="" src="../../static/img/logo.gif" >
+			<img class="logo_img" alt="" src="../../static/img/logo1.png" >
 			<span class="wel_word">我的訂單</span>
 
 		<%--靜態包含，登入成功之後的菜單 --%>

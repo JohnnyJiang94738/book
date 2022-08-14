@@ -22,7 +22,7 @@
 </head>
 <body>
 		<div id="header">
-				<img class="logo_img" alt="" src="static/img/logo.gif" >
+				<img class="logo_img" alt="" src="static/img/logo1.png" >
 
 				<%--静態包含，登入成功之後的菜單 --%>
 				<%@ include file="/pages/common/login_success_menu.jsp"%>
